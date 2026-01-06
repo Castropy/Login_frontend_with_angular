@@ -1,6 +1,6 @@
 import { Component, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { LogginComponent } from './loggin/loggin.component';
+import { LogginComponent } from './login/login.component';
   // 👈 importa tu componente
 
 @Component({
