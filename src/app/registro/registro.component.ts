@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-registro',
-  imports: [],
-  templateUrl: './registro.html',
-  styleUrl: './registro.css',
+  standalone: true,
+  imports: [CommonModule, FormsModule],
+  templateUrl: './registro.component.html',
+  styleUrls: ['./registro.component.css']
 })
-export class Registro {
-
-}
+export class RegistroComponent { }
