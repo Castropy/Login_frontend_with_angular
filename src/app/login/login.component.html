@@ -2,20 +2,29 @@
   <h2>Login</h2>
   
   <form [formGroup]="form" (ngSubmit)="ingresar()">
-    <div>
-      <label for="username">Usuario</label>
-      <input id="username" type="text" placeholder="Usuario" formControlName="username" />
-      <small *ngIf="form.get('username')?.invalid && form.get('username')?.touched">
-        El usuario es requerido
-      </small>
+    <!-- Campo Usuario con ícono -->
+    <div class="input-group">
+      <i class="fas fa-user"></i>
+      <input 
+        id="username" 
+        type="text" 
+        placeholder="Usuario" 
+        formControlName="username" 
+      />
     </div>
-    <div>
-      <label for="password">Contraseña</label>
-      <input id="password" type="password" placeholder="Contraseña" formControlName="password" />
-      <small *ngIf="form.get('password')?.invalid && form.get('password')?.touched">
-        La contraseña es requerida
-      </small>
+
+    <!-- Campo Contraseña con ícono -->
+    <div class="input-group">
+      <i class="fas fa-lock"></i>
+      <input 
+        id="password" 
+        type="password" 
+        placeholder="Contraseña" 
+        formControlName="password" 
+      />
     </div>
+
+    <!-- Botones -->
     <div class="buttons">
       <button type="submit">Ingresar</button>
       <button type="button" [routerLink]="['/registro']">Registrarse</button>
