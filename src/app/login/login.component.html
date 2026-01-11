@@ -1,33 +1,35 @@
-<div class="login-container">
-  <h2>Login</h2>
-  
-  <form [formGroup]="form" (ngSubmit)="ingresar()">
-    <!-- Campo Usuario con ícono -->
-    <div class="input-group">
-      <i class="fas fa-user"></i>
-      <input 
-        id="username" 
-        type="text" 
-        placeholder="Usuario" 
-        formControlName="username" 
-      />
-    </div> 
+<div class="login-page">
+  <div class="login-container">
+    <h2>Login</h2>
+    
+    <form [formGroup]="form" (ngSubmit)="ingresar()">
+      <!-- Campo Usuario con ícono -->
+      <div class="input-group">
+        <i class="fas fa-user"></i>
+        <input 
+          id="username" 
+          type="text" 
+          placeholder="Usuario" 
+          formControlName="username" 
+        />
+      </div> 
 
-    <!-- Campo Contraseña con ícono -->
-    <div class="input-group">
-      <i class="fas fa-lock"></i>
-      <input 
-        id="password" 
-        type="password" 
-        placeholder="Contraseña" 
-        formControlName="password" 
-      />
-    </div>
+      <!-- Campo Contraseña con ícono -->
+      <div class="input-group">
+        <i class="fas fa-lock"></i>
+        <input 
+          id="password" 
+          type="password" 
+          placeholder="Contraseña" 
+          formControlName="password" 
+        />
+      </div>
 
-    <!-- Botones -->
-    <div class="buttons">
-      <button type="submit">Ingresar</button>
-      <button type="button" [routerLink]="['/registro']">Registrarse</button>
-    </div>
-  </form>
+      <!-- Botones -->
+      <div class="buttons">
+        <button type="submit">Ingresar</button>
+        <button type="button" [routerLink]="['/registro']">Registrarse</button>
+      </div>
+    </form>
+  </div>
 </div>

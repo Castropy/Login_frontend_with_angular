@@ -1,17 +1,19 @@
 /* --- Fondo general de toda la pantalla --- */
-:host {
-  display: block;
-  height: 100vh; /* ocupa toda la altura de la ventana */
+.login-page {
+  height: 100vh;
   background-image: url('/assets/background_login.jpg'); /* tu imagen en assets */
-  background-size: cover;       /* ajusta la imagen al tamaño */
-  background-position: center;  /* centra la imagen */
-  background-repeat: no-repeat; /* evita repeticiones */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  display: flex;
+  justify-content: center;
+  align-items: center; /* centra vertical y horizontal */
 }
 
 /* --- Contenedor del login con efecto blur --- */
 .login-container {
   width: 320px;
-  margin: 0 auto;
   padding: 20px;
   border-radius: 12px;
   box-shadow: 0 4px 20px rgba(0,0,0,0.2);
@@ -19,12 +21,6 @@
   font-family: Arial, sans-serif;
   color: #303094;
 
-  /* Centrado vertical */
-  position: relative;
-  top: 50%;
-  transform: translateY(-50%);
-
-  /* Fondo translúcido con blur */
   background: rgba(255, 255, 255, 0.3); /* capa semitransparente */
   backdrop-filter: blur(10px);           /* difuminado */
   -webkit-backdrop-filter: blur(10px);   /* soporte Safari */
