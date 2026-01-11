@@ -1,10 +1,12 @@
+/* --- Contenedor principal --- */
 .login-container {
   width: 320px;
   margin: 60px auto;
   padding: 20px;
   border-radius: 8px;
   box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-  background-color: #f9f9f9;
+  background-color: #e6f0fa; /* color final */
+  border: 1px solid #d0d7e2;
   text-align: center;
   font-family: Arial, sans-serif;
   color: #303094;
@@ -15,20 +17,36 @@
   font-weight: bold;
 }
 
-.login-container input {
-  width: 100%;
-  padding: 12px;
-  margin: 10px 0;
+/* --- Inputs con íconos --- */
+.input-group {
+  display: flex;
+  align-items: center;
   border: 1px solid #ccc;
   border-radius: 6px;
+  padding: 0 10px;
+  margin: 10px 0;
+  background-color: #fff;
+}
+
+.input-group i {
+  color: #303094;
+  margin-right: 8px;
+}
+
+.input-group input {
+  flex: 1;
+  border: none;
+  padding: 12px;
+  outline: none;
+  font-size: 14px;
   transition: border-color 0.3s;
 }
 
-.login-container input:focus {
+.input-group input:focus {
   border-color: #97c4ee;
-  outline: none;
 }
 
+/* --- Botones --- */
 .buttons {
   display: flex;
   justify-content: space-between;
@@ -64,35 +82,8 @@
   background-color: #7ab0e0;
 }
 
-
-/* --- estilos originales --- */
-.login-container {
-  /* ... */
-  background-color: #e6f0fa;
-  border: 1px solid #d0d7e2;
+/* --- Accesibilidad: enfoque visible --- */
+.buttons button:focus {
+  outline: 2px solid #97c4ee;
+  outline-offset: 2px;
 }
-
-/* --- nuevos estilos para los inputs con íconos --- */
-.input-group {
-  display: flex;
-  align-items: center;
-  border: 1px solid #ccc;
-  border-radius: 6px;
-  padding: 0 10px;
-  margin: 10px 0;
-  background-color: #fff;
-}
-
-.input-group i {
-  color: #303094;
-  margin-right: 8px;
-}
-
-.input-group input {
-  flex: 1;
-  border: none;
-  padding: 12px;
-  outline: none;
-  font-size: 14px;
-}
-
