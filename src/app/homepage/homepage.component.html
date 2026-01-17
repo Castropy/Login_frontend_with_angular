@@ -1,5 +1,11 @@
-<div class="home-page"> 
- 
-    <p>En construccion...</p>   
-
+<div class="home-page">
+  @if (showWelcome) {
+    <div class="welcome-container">
+      <h1 class="welcome-text">Welcome</h1>
+    </div>
+  } @else {
+    <div class="main-content fade-in">
+      <p>Aquí irá el resto de tu contenido... 🚀</p>
+    </div>
+  }
 </div>
