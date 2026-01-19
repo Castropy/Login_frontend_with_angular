@@ -1,32 +1,23 @@
-import { Component, OnInit, signal, inject } from '@angular/core';
-import { Router, RouterModule } from '@angular/router';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-@Component({
-  selector: 'app-homepage',
-  standalone: true,
-  imports: [RouterModule],
-  templateUrl: './homepage.component.html',
-  styleUrl: './homepage.component.css',
-})
-export class Homepage implements OnInit {
-  private router = inject(Router);
+import { Homepage } from './homepage.component';
 
-  showWelcome = signal(true);
-  menuAbierto = signal(false);
+describe('Homepage', () => {
+  let component: Homepage;
+  let fixture: ComponentFixture<Homepage>;
 
-  ngOnInit(): void {
-    setTimeout(() => {
-      this.showWelcome.set(false);
-    }, 2000);
-  }
+  beforeEach(async () => {
+    await TestBed.configureTestingModule({
+      imports: [Homepage]
+    })
+    .compileComponents();
 
-  toggleMenu() {
-    this.menuAbierto.update(v => !v);
-  }
+    fixture = TestBed.createComponent(Homepage);
+    component = fixture.componentInstance;
+    await fixture.whenStable();
+  });
 
-  cerrarSesion() {
-    localStorage.removeItem('access_token');
-    localStorage.removeItem('refresh_token');
-    this.router.navigate(['/login']);
-  }
-}
+  it('should create', () => {
+    expect(component).toBeTruthy();
+  });
+});
