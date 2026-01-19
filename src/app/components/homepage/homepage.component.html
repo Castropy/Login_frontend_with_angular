@@ -1,11 +1,32 @@
 <div class="viewport">
-  @if (showWelcome()) { <div class="welcome-overlay">
-      <h1 class="welcome-text">Welcome</h1>
+  <nav class="navbar">
+    <div class="user-menu">
+      <button class="btn-config" (click)="toggleMenu()">
+        Configuración ▼
+      </button>
+
+      @if (menuAbierto()) {
+        <div class="dropdown">
+          <button class="dropdown-item">Mi Perfil</button>
+          <button class="dropdown-item">Ajustes</button>
+          <button class="dropdown-item logout" (click)="cerrarSesion()">
+            Cerrar Sesión
+          </button>
+        </div>
+      }
     </div>
-  } @else {
-    <div class="main-content">
-      <h1>¡Hola! Este es el contenido final.</h1>
-      <p>Ya puedes empezar a construir aquí.</p>
-    </div>
-  }
+  </nav>
+
+  <div class="content-wrapper">
+    @if (showWelcome()) { 
+      <div class="welcome-overlay">
+        <h1 class="welcome-text">Welcome</h1>
+      </div>
+    } @else {
+      <div class="main-content">
+        <h1>¡Hola! Este es el contenido final.</h1>
+        <p>Ya puedes empezar a construir aquí.</p>
+      </div>
+    }
+  </div>
 </div>
