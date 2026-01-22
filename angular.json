@@ -21,7 +21,10 @@
             "assets": [ "src/assets" ],
             "styles": [
               "src/styles.css"
-            ]
+            ],
+            "scripts": [
+              "node_modules/particles.js/particles.js"
+]
           },
           "configurations": {
             "production": {
