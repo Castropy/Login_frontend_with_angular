@@ -1,7 +1,10 @@
-import { Component } from '@angular/core'; //Componente autonomo (standalone)
-import { RouterModule, Router } from '@angular/router'; //Import para navegar entre vistas
-import { ReactiveFormsModule, FormBuilder, Validators, FormGroup } from '@angular/forms'; //Import para el manejo avanzado de formularios
-import { HttpClient } from '@angular/common/http'; //Import para peticiones http al servidor 
+import { Component, OnInit } from '@angular/core';
+import { RouterModule, Router } from '@angular/router';
+import { ReactiveFormsModule, FormBuilder, Validators, FormGroup } from '@angular/forms';
+import { HttpClient } from '@angular/common/http';
+
+// Declaración para que TypeScript reconozca la librería externa de partículas
+declare var particlesJS: any;
 
 @Component({
   selector: 'app-login',
@@ -10,7 +13,7 @@ import { HttpClient } from '@angular/common/http'; //Import para peticiones http
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit {
   form: FormGroup;
 
   constructor(
@@ -18,36 +21,63 @@ export class LoginComponent {
     private http: HttpClient,
     private router: Router
   ) {
-    // Inicialización dentro del constructor
     this.form = this.fb.group({
-      username: ['', Validators.required], //Campo de entrada de usuario requerido
-      password: ['', Validators.required]  //Campo de entrada de clave requerido
+      username: ['', Validators.required],
+      password: ['', Validators.required]
     });
   }
 
+  ngOnInit(): void {
+    this.initParticles();
+  }
+
   ingresar() {
-    if (this.form.valid) { //Si el formulario cumple con las condiciones 
-      this.http.post('http://localhost:8000/api/auth/login/', this.form.value) 
-      /*Envia una peticion http tipo POST a una api 'http://localhost:8000/api/auth/login/'
-      con los datos capturados en el formulario, es decir usuario y clave.
-      */      
-        .subscribe({ /*Si la respuesta del servidor es correcta el codigo extrae
-          los tokens JWT (acces y refresh)*/
+    if (this.form.valid) {
+      this.http.post('http://localhost:8000/api/auth/login/', this.form.value)
+        .subscribe({
           next: (res: any) => {
-            // Guardar tokens JWT en local storage del navegador 
             localStorage.setItem('access_token', res.access);
             localStorage.setItem('refresh_token', res.refresh);
-
-            
             this.router.navigate(['/homepage']);
-            /*Finalmente despues de validar los campos de entrada
-            y guardar los tokens, ahora la vista se redirige hacia 
-            el componente homepage*/
           },
-          error: () => { //En caso de error en el formulario arroja un alert
+          error: () => {
             alert('Usuario o contraseña incorrecta');
           }
         });
-    } 
+    }
+  }
+
+  initParticles(): void {
+    particlesJS('particles-js', {
+      "particles": {
+        "number": { "value": 100, "density": { "enable": true, "value_area": 800 } },
+        "color": { "value": "#ffffff" },
+        "shape": { "type": "circle" },
+        "opacity": { "value": 0.5, "random": true },
+        "size": { "value": 3, "random": true },
+        "line_linked": {
+          "enable": true,
+          "distance": 150,
+          "color": "#ffffff",
+          "opacity": 0.2,
+          "width": 1
+        },
+        "move": {
+          "enable": true,
+          "speed": 1.5,
+          "direction": "none",
+          "random": true,
+          "out_mode": "out"
+        }
+      },
+      "interactivity": {
+        "detect_on": "canvas",
+        "events": {
+          "onhover": { "enable": true, "mode": "grab" },
+          "onclick": { "enable": true, "mode": "push" }
+        }
+      },
+      "retina_detect": true
+    });
   }
 }
